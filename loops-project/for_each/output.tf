@@ -1,3 +1,6 @@
 output "instance_ids" {
-  value = aws_instance.ec2[*].id
+  value = {
+    for key, instance in aws_instance.ec2 :
+    key => instance.id
+  }
 }
